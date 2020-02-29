@@ -1,24 +1,26 @@
-# projects
+# web-scaffold-vuejs
 
-## Project setup
-```
-npm install
-```
+Vue.js で Web アプリケーションを docker 環境で開発する際の土台
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Commands
 
-### Compiles and minifies for production
+環境起動
 ```
-npm run build
+$ docker-compose -p $USER up -d
 ```
-
-### Lints and fixes files
+環境破棄
 ```
-npm run lint
+$ docker-compose -p $USER down
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+パッケージ追加
+```
+$ docker-compose -p $USER exec app npm install <package-name>
+```
+Build
+```
+$ docker-compose -p $USER exec app npm build
+```
+Lint
+```
+$ docker-compose -p $USER exec app npm lint
+```
