@@ -1,0 +1,27 @@
+version: '3'
+
+networks:
+  web:
+    external:
+      name: traefik_web
+
+services:
+  app:
+    container_name: app
+    build:
+      context: .
+    volumes:
+      - '.:/projects'
+      - '/projects/node_modules'
+    expose:
+      - 8080
+    tty: true
+    environment:
+      BASE_URL: "/$USER"
+    command: npm run serve -- --port 8080 --host 0.0.0.0
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.$USER.entrypoints=front"
+      - "traefik.http.routers.$USER.rule=PathPrefix(`/$USER{regex:$$|/.*}`)"
+    networks:
+      - web
