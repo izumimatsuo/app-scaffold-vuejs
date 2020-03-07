@@ -1,4 +1,4 @@
-# web-scaffold-vuejs
+# app-scaffold-vuejs
 
 Vue.js で Web アプリケーションを docker 環境で開発する際の土台
 
